@@ -1,33 +1,12 @@
-import React, {useState} from "react";
+ 
+
 import Field from "./Field";
-const fields = {
-sections: 
-         [
-        {name: 'name', element: 'input', type: 'text', placeholder: 'Your name', classname: 'textfield'},
-        {name: 'email', element: 'input', type: 'text', placeholder: 'Your email', classname: 'textfield'},
-        {name: 'phone', element: 'input', type: 'text', placeholder: 'Phone number', classname: 'textfield'},
-        {name: 'message', element: 'textarea', type: 'text', placeholder: 'Type your message', classname: 'textarea'}
-        
-        ]
 
-    
-
-
-}
 
 
 ;
-export default function Form(props) {
-    const initialState =  {
-        name: '',
-        email:'',
-        phone:'',
-        message: ''
-         }
-
-   const {formState, setForm} = useState(initialState)
-
-
+const Form  = ({formState, setForm, fields}) => {
+   
 
 
         return(
@@ -42,7 +21,8 @@ export default function Form(props) {
                 <form id="contactForm" data-sb-form-api-token="API_TOKEN">
                     <div className="row align-items-stretch mb-5">
                     <div className='col-md-6' >
-                     {fields.sections.map((section, sectionIndex) => {
+                     {fields.sections.map((section, sectionIndex, 
+) => {
                          console.log("new rending section", sectionIndex, "with", section);
                      
     
@@ -51,14 +31,13 @@ export default function Form(props) {
                          {...section}
                           key={sectionIndex} 
                           value ={formState[section.name]}
-                           
+       
                           onChange = {e => setForm(
                               
                             {[section.name]: e.target.value}
                             
                             
                             )}
-
                             
 
                           /> 
@@ -101,3 +80,4 @@ export default function Form(props) {
         </section>
         )
     }
+export default Form;

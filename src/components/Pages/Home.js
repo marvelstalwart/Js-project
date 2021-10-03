@@ -1,4 +1,4 @@
-import React, {Component} from "react";
+import React, {useState} from "react";
 import Header from "../Common/Header";
 import image from "../assets/img/header-bg.jpg";
 import Services from "../Common/Services";
@@ -7,9 +7,35 @@ import AboutTeam from "../Common/AboutTeam";
 import Team from "../Common/Team";
 import Socials from "../Common/Socials";
 import Form from "../Common/Form";
-class Home extends Component {
 
-render () {
+const fields = {
+    sections: 
+             [
+            {name: 'name', element: 'input', type: 'text', placeholder: 'Your name', classname: 'textfield'},
+            {name: 'email', element: 'input', type: 'text', placeholder: 'Your email', classname: 'textfield'},
+            {name: 'phone', element: 'input', type: 'text', placeholder: 'Phone number', classname: 'textfield'},
+            {name: 'message', element: 'textarea', type: 'text', placeholder: 'Type your message', classname: 'textarea'}
+            
+            ]
+    
+        
+    
+    
+    }
+
+
+const Home = () => {
+
+  
+   const [formState, setForm] = useState( {
+        name: '',
+        email:'',
+        phone:'',
+        message: ''
+         }
+)
+
+
 
 
     return (
@@ -27,13 +53,13 @@ image={image}
 <AboutTeam/>
 <Team/>
 <Socials/>
-<Form/>
+<Form formState={formState} setForm={setForm} fields={fields}/>
 </div>
 
     )
 }
 
 
-}
+
 
 export default Home;
